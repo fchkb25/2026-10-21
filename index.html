@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>許家泓 | 個人簡介 Portfolio</title>
+  <meta name="description" content="許家泓的個人簡介與履歷。熱愛腳踏車、跑步與 3D 列印，專注於自造與探索。">
+  
+  <!-- Google Fonts: Noto Sans TC & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       馬卡龍色系色彩與變數系統 (Design System)
+       ========================================== */
+    :root {
+      /* 馬卡龍柔和色彩 */
+      --macaron-mint: #C5EBE0;
+      --macaron-peach: #FFD3C4;
+      --macaron-lavender: #E6DCFA;
+      --macaron-yellow: #FEF0B7;
+      --macaron-sky: #CFE7FA;
+      --macaron-rose: #FDCEDF;
+      
+      /* 介面底色與階調 */
+      --bg-page: #FAF8F5;
+      --card-bg: rgba(255, 255, 255, 0.82);
+      --card-border: rgba(255, 255, 255, 0.9);
+      
+      /* 文字色系 (保持清晰舒適對比) */
+      --text-primary: #2D3748;
+      --text-secondary: #5F6E82;
+      --text-light: #8E9BAE;
+      
+      /* 重點強調色 (萃取自馬卡龍的低飽和主色) */
+      --accent-tint: #6B8AFD;
+      --accent-soft: rgba(107, 138, 253, 0.12);
+
+      /* 圓角與陰影 */
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+      --shadow-soft: 0 10px 30px rgba(185, 195, 210, 0.22);
+      --shadow-hover: 0 16px 36px rgba(160, 175, 200, 0.32);
+    }
+
+    /* 基本重設 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.7;
+      position: relative;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 馬卡龍漸層光暈背景裝飾 */
+    .bg-blob-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(85px);
+      opacity: 0.65;
+      animation: floatSlow 18s ease-in-out infinite alternate;
+    }
+
+    .blob-1 {
+      width: 480px;
+      height: 480px;
+      background: var(--macaron-peach);
+      top: -120px;
+      right: -100px;
+    }
+
+    .blob-2 {
+      width: 520px;
+      height: 520px;
+      background: var(--macaron-mint);
+      bottom: 10%;
+      left: -150px;
+      animation-delay: -5s;
+    }
+
+    .blob-3 {
+      width: 420px;
+      height: 420px;
+      background: var(--macaron-lavender);
+      top: 45%;
+      right: -80px;
+      animation-delay: -9s;
+    }
+
+    .blob-4 {
+      width: 360px;
+      height: 360px;
+      background: var(--macaron-yellow);
+      top: 15%;
+      left: 20%;
+      opacity: 0.45;
+      animation-delay: -13s;
+    }
+
+    @keyframes floatSlow {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(30px, 40px) scale(1.08);
+      }
+      100% {
+        transform: translate(-25px, 20px) scale(0.95);
+      }
+    }
+
+    /* 容器架構 */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* 頂部簡易導覽 */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      margin-bottom: 20px;
+    }
+
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text-primary);
+      letter-spacing: 0.5px;
+    }
+
+    .brand-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--macaron-peach), var(--macaron-lavender));
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(255, 180, 180, 0.5);
+    }
+
+    .nav-tag {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    /* Hero 首頁主視覺 */
+    .hero-section {
+      text-align: center;
+      padding: 50px 0 70px;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      width: 130px;
+      height: 130px;
+      margin: 0 auto 28px;
+    }
+
+    .avatar-card {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(145deg, #FFFFFF, #FFF2EC);
+      box-shadow: 0 12px 30px rgba(255, 180, 180, 0.35);
+      border: 4px solid #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .avatar-wrapper:hover .avatar-card {
+      transform: scale(1.06) rotate(3deg);
+    }
+
+    .avatar-icon {
+      width: 64px;
+      height: 64px;
+      fill: none;
+      stroke: var(--text-primary);
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .avatar-badge {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: var(--macaron-mint);
+      border: 3px solid #FFF;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      box-shadow: 0 4px 10px rgba(100, 180, 150, 0.25);
+    }
+
+    .hero-greeting {
+      display: inline-block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      background: var(--macaron-yellow);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 14px;
+    }
+
+    .hero-name {
+      font-size: clamp(2.4rem, 6vw, 3.4rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+    }
+
+    .hero-quote {
+      font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+      color: var(--text-secondary);
+      font-weight: 500;
+      max-width: 580px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    .quote-badge {
+      background: linear-gradient(120deg, var(--macaron-lavender), var(--macaron-rose));
+      padding: 3px 12px;
+      border-radius: 8px;
+      color: #38314A;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      font-weight: 400;
+    }
+
+    /* 標籤小藥丸群組 */
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .macaron-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      font-weight: 500;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
+      cursor: default;
+    }
+
+    .macaron-pill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .pill-bike { border-left: 4px solid #8FD5C4; }
+    .pill-run  { border-left: 4px solid #FFAB91; }
+    .pill-3d   { border-left: 4px solid #C4A7E7; }
+
+    /* 區塊共用樣式 */
+    .section-wrapper {
+      margin-bottom: 70px;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .section-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .icon-box-mint { background: var(--macaron-mint); }
+    .icon-box-peach { background: var(--macaron-peach); }
+    .icon-box-lavender { background: var(--macaron-lavender); }
+    .icon-box-yellow { background: var(--macaron-yellow); }
+
+    .section-title {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.3px;
+    }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    /* 簡約卡片底色與毛玻璃 */
+    .clean-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-soft);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .clean-card:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* 關於我卡片 */
+    .about-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, var(--macaron-yellow) 0%, transparent 70%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .about-text {
+      font-size: 1.06rem;
+      color: var(--text-secondary);
+      line-height: 1.85;
+    }
+
+    .about-highlight {
+      color: var(--text-primary);
+      font-weight: 600;
+      background: linear-gradient(180deg, transparent 65%, var(--macaron-yellow) 65%);
+      padding: 0 2px;
+    }
+
+    /* 興趣三欄 Grid */
+    .hobbies-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .hobby-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      padding: 26px 22px;
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .hobby-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .hobby-icon-pill {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 18px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease;
+    }
+
+    .hobby-card:hover .hobby-icon-pill {
+      transform: scale(1.1) rotate(-4deg);
+    }
+
+    .hobby-mint { background: var(--macaron-mint); }
+    .hobby-peach { background: var(--macaron-peach); }
+    .hobby-lavender { background: var(--macaron-lavender); }
+
+    .hobby-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .hobby-desc {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .hobby-tag {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text-secondary);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    /* 技能亮點卡片 (3D列印專長) */
+    .skill-spotlight-card {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 36px;
+      align-items: center;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skill-left {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .badge-focus {
+      align-self: flex-start;
+      background: var(--macaron-lavender);
+      color: #4C3C6E;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+    }
+
+    .skill-name {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .skill-statement {
+      font-size: 0.98rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .skill-feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.65);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: all 0.25s ease;
+    }
+
+    .feature-item:hover {
+      background: #FFFFFF;
+      transform: translateX(4px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-icon-badge {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--macaron-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: #265B4E;
+      font-weight: bold;
+    }
+
+    .feature-title {
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .feature-desc {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    /* 作品展演卡片：牙空車 */
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(14px);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .project-tag-pill {
+      background: var(--macaron-peach);
+      color: #7A3521;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      display: inline-block;
+    }
+
+    .project-title {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 6px;
+    }
+
+    .project-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #2F7C66;
+      background: rgba(197, 235, 224, 0.55);
+      border: 1px solid var(--macaron-mint);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-weight: 500;
+    }
+
+    .status-ping {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #249C76;
+    }
+
+    .project-body {
+      font-size: 1.02rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    /* 成果指標條 */
+    .metrics-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      padding-top: 20px;
+      border-top: 1px dashed rgba(160, 175, 200, 0.35);
+    }
+
+    .metric-box {
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      transition: transform 0.25s ease;
+    }
+
+    .metric-box:hover {
+      transform: translateY(-3px);
+      background: #FFF;
+    }
+
+    .metric-number {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .metric-label {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    /* 頁尾 Footer */
+    .footer {
+      text-align: center;
+      padding: 50px 0 60px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    .footer-quote {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .footer-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 6px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    /* ==========================================
+       捲動淡入與動畫設定 (Scroll Animations)
+       ========================================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .fade-in.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 階梯式延遲 (Staggered Delays) */
+    .delay-1 { transition-delay: 0.12s; }
+    .delay-2 { transition-delay: 0.24s; }
+    .delay-3 { transition-delay: 0.36s; }
+
+    /* ==========================================
+       響應式設計 (Responsive Media Queries)
+       ========================================== */
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 18px;
+      }
+
+      .hero-section {
+        padding: 30px 0 50px;
+      }
+
+      .hobbies-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .skill-spotlight-card {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 26px 20px;
+      }
+
+      .clean-card,
+      .project-card {
+        padding: 24px 20px;
+      }
+
+      .metrics-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .hero-name {
+        font-size: 2.2rem;
+      }
+
+      .hero-quote {
+        font-size: 1.15rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .avatar-wrapper {
+        width: 110px;
+        height: 110px;
+      }
+
+      .avatar-icon {
+        width: 52px;
+        height: 52px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 背景柔美馬卡龍光暈 (Macaron Ambient Orbs) -->
+  <div class="bg-blob-container" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- 頂部精緻導覽列 -->
+    <header class="navbar fade-in">
+      <a href="#" class="brand-logo" id="brand-logo">
+        <span class="brand-dot"></span>
+        許家泓 Chia-hung
+      </a>
+      <span class="nav-tag" id="nav-status">🌱 保持熱愛，安靜前行</span>
+    </header>
+
+    <!-- 主視覺區 Hero Section -->
+    <main>
+      <section class="hero-section" id="hero">
+        <div class="avatar-wrapper fade-in">
+          <div class="avatar-card">
+            <!-- 簡約內斂人像與創客象徵 SVG 圖標 -->
+            <svg class="avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="8" r="4.2" />
+              <path d="M5 20c0-3.8 3.1-6.8 7-6.8s7 3 7 6.8" />
+            </svg>
+          </div>
+          <div class="avatar-badge" title="熱愛 3D 列印與手作">✨</div>
+        </div>
+
+        <div class="hero-greeting fade-in delay-1">Hello, I'm</div>
+        <h1 class="hero-name fade-in delay-1">許家泓</h1>
+        
+        <p class="hero-quote fade-in delay-2">
+          「<span class="quote-badge">內向害羞</span>」是我認識世界的方式，<br>
+          在踏板節奏與噴頭層層堆疊裡，找到最自在的專注。
+        </p>
+
+        <p class="hero-description fade-in delay-2">
+          比起喧鬧的聚會，更喜歡一個人戴著耳機踩著踏板迎風前行，<br>
+          或是專注看著 3D 列印機將腦海中的立體構想，一點一滴實體化。
+        </p>
+
+        <!-- 興趣亮點小藥丸 -->
+        <div class="pill-group fade-in delay-3">
+          <div class="macaron-pill pill-bike">
+            <span>🚴</span> 腳踏車 Cycling
+          </div>
+          <div class="macaron-pill pill-run">
+            <span>🏃</span> 跑步 Running
+          </div>
+          <div class="macaron-pill pill-3d">
+            <span>🖨️</span> 3D 列印 3D Printing
+          </div>
+        </div>
+      </section>
+
+      <!-- 關於我 Section -->
+      <section class="section-wrapper" id="about">
+        <div class="section-header fade-in">
+          <div class="section-icon-box icon-box-yellow">🌱</div>
+          <div>
+            <h2 class="section-title">關於我</h2>
+            <p class="section-subtitle">About Myself & Personality</p>
+          </div>
+        </div>
+
+        <div class="clean-card about-card fade-in">
+          <p class="about-text">
+            你好，我是 <span class="about-highlight">許家泓</span>。
+            雖然平時給人的印象總是<strong>內向害羞</strong>、話不算多，但對待自己真正感興趣的事物，卻有著源源不絕的耐心與探索慾。
+            <br><br>
+            我不急於在人群中發光，而是選擇在安靜的步調裡扎實累積。
+            無論是換上跑鞋調整呼吸、踩上腳踏車穿梭日常風景，還是在切片軟體中微調每一道層厚與支撐，這些過程都讓我保持專注與澄澈。
+          </p>
+        </div>
+      </section>
+
+      <!-- 興趣愛好 Section -->
+      <section class="section-wrapper" id="hobbies">
+        <div class="section-header fade-in">
+          <div class="section-icon-box icon-box-mint">✨</div>
+          <div>
+            <h2 class="section-title">生活與興趣</h2>
+            <p class="section-subtitle">My Hobbies & Passion</p>
+          </div>
+        </div>
+
+        <div class="hobbies-grid">
+          <!-- 興趣 1：腳踏車 -->
+          <article class="hobby-card fade-in delay-1" id="hobby-bike">
+            <div class="hobby-icon-pill hobby-mint">🚴</div>
+            <h3 class="hobby-title">腳踏車</h3>
+            <p class="hobby-desc">
+              享受雙腳踏出的穩定頻率與迎面微風。在公路與河濱之間，用最適當的速度體會周遭的風景。
+            </p>
+            <span class="hobby-tag">#風與自由</span>
+          </article>
+
+          <!-- 興趣 2：跑步 -->
+          <article class="hobby-card fade-in delay-2" id="hobby-run">
+            <div class="hobby-icon-pill hobby-peach">🏃</div>
+            <h3 class="hobby-title">跑步</h3>
+            <p class="hobby-desc">
+              一段專屬於自己的心靈沉澱時光。調整呼吸與步伐節奏，在每一次邁步中鍛鍊專注力與心智耐力。
+            </p>
+            <span class="hobby-tag">#自我對話</span>
+          </article>
+
+          <!-- 興趣 3：3D列印 -->
+          <article class="hobby-card fade-in delay-3" id="hobby-3dprint">
+            <div class="hobby-icon-pill hobby-lavender">🖨️</div>
+            <h3 class="hobby-title">3D 列印</h3>
+            <p class="hobby-desc">
+              結合空間幾何與創客動手樂趣。看著熱熔沉積在加熱板上一層層成形，體驗將想像化為真實物件的成就感。
+            </p>
+            <span class="hobby-tag">#數位自造</span>
+          </article>
+        </div>
+      </section>
+
+      <!-- 技能與想深入學習的領域 Section -->
+      <section class="section-wrapper" id="skills">
+        <div class="section-header fade-in">
+          <div class="section-icon-box icon-box-lavender">🛠️</div>
+          <div>
+            <h2 class="section-title">核心專長與學習目標</h2>
+            <p class="section-subtitle">Core Skills & Future Learning</p>
+          </div>
+        </div>
+
+        <div class="skill-spotlight-card fade-in">
+          <div class="skill-left">
+            <span class="badge-focus">FOCUS AREA</span>
+            <h3 class="skill-name">3D 列印探索<br>與機構自造</h3>
+            <p class="skill-statement">
+              3D 列印是我目前最投入且持續精進的領域。從實體模型切片、機台調校到零組件公差控制，享受把虛擬線條轉為實體手感的完整流程。
+            </p>
+          </div>
+
+          <div class="skill-feature-list">
+            <div class="feature-item">
+              <div class="feature-icon-badge">01</div>
+              <div>
+                <div class="feature-title">切片參數微調與幾何最佳化</div>
+                <div class="feature-desc">熟悉層高、填充率、支撐結構與溫度控制，確保列印品質穩定平滑。</div>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon-badge">02</div>
+              <div>
+                <div class="feature-title">機構配合與裝配公差實作</div>
+                <div class="feature-desc">在實作如「牙空車」等機構件時，針對齒輪配合、軸承間隙進行反覆測試修正。</div>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="feature-icon-badge">03</div>
+              <div>
+                <div class="feature-title">持續進修目標 (Want to Learn)</div>
+                <div class="feature-desc">持續深入 3D CAD 參數化建模技術、不同耗材特質（PETG/TPU）及多色複合列印。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 做過的作品 / 參加過的活動 Section -->
+      <section class="section-wrapper" id="projects">
+        <div class="section-header fade-in">
+          <div class="section-icon-box icon-box-peach">🏆</div>
+          <div>
+            <h2 class="section-title">實作作品與經歷</h2>
+            <p class="section-subtitle">Featured Project & Experience</p>
+          </div>
+        </div>
+
+        <div class="project-card fade-in">
+          <div class="project-header-flex">
+            <div>
+              <span class="project-tag-pill">創客自造專案</span>
+              <h3 class="project-title">牙空車 Maker Car</h3>
+            </div>
+            <div class="project-status">
+              <span class="status-ping"></span>
+              實作完成與反覆驗證
+            </div>
+          </div>
+
+          <p class="project-body">
+            「牙空車」是一次將機械結構、動力傳遞與 3D 列印結合的實戰體驗。
+            在製作過程中，面對車身輕量化、輪軸與齒輪嚙合的阻力難題，透過一次次重新設計、微調列印方向與裝配公差，最終完成流暢運轉的成果。
+            這個專案不僅鍛鍊了動手解決問題的抗壓性，也讓我深刻體會到將設計圖一步步落實為實物的自造成就感。
+          </p>
+
+          <!-- 亮點指標 -->
+          <div class="metrics-row">
+            <div class="metric-box">
+              <span class="metric-number">3D 列印</span>
+              <span class="metric-label">零組件原型打樣與組裝</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-number">機構調校</span>
+              <span class="metric-label">齒輪與公差精準匹配</span>
+            </div>
+            <div class="metric-box">
+              <span class="metric-number">動手實踐</span>
+              <span class="metric-label">發現問題並快速迭代</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 頁尾結語 Footer -->
+      <footer class="footer fade-in">
+        <p class="footer-quote">「安靜地累積，細緻地雕琢。」</p>
+        <p>© 許家泓 Hsu Chia-hung · Made with Macaron Palette & Minimalist Spirit</p>
+        <div class="footer-pill">
+          <span>🎨</span> 馬卡龍柔和色系 · 簡約風格網頁
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- ==========================================
+       純 JavaScript：捲動淡入動畫 (Scroll Animation)
+       ========================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 選取所有需要淡入效果的元素
+      const fadeElements = document.querySelectorAll('.fade-in');
+
+      // 使用現代高效的 IntersectionObserver 監聽捲動進場
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px 0px -50px 0px', // 當元素進入可視範圍上方 50px 時觸發
+        threshold: 0.12                   // 元素出現 12% 時開始淡入
+      };
+
+      const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            // 動畫觸發一次後即可解除監聽，保持極致效能
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      fadeElements.forEach(el => scrollObserver.observe(el));
+    });
+  </script>
+</body>
+</html>
